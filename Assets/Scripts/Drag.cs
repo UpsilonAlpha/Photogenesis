@@ -113,7 +113,7 @@ public class Drag : MonoBehaviour
                 }
 
                 line.SetPosition(0, transform.position);
-                line.SetPosition(1, transform.position+fireDirection/100);
+                line.SetPosition(1, transform.position+fireDirection/220);
 
                 if (Input.touchCount == 0 )
                 {

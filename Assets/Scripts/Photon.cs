@@ -75,24 +75,29 @@ public class Photon : MonoBehaviour
         if (height < 300f)
         {
             score.text = "You're a gamma ray! You had a wavelength of: " + d.ToString("E1") + "m\nVery dangerous ionizing radiation.";
+            PlayerPrefs.SetString("g", "true");
         }
         else if (height < 600f)
         {
             score.text = "You're an X-ray! You had a wavelength of: " + d.ToString("E1") + "m\nHighly energetic and useful for imaging.";
+            PlayerPrefs.SetString("x", "true");
         }
         else if (height < 900f)
         {
-            score.text = "You're a UV ray! You had a wavelength of: " + d.ToString("E1") + "m\nCauses fluroescence and only harmful with prolonged exposure.";
+            score.text = "You're UV light! You had a wavelength of: " + d.ToString("E1") + "m\nCauses fluroescence and only harmful with prolonged exposure.";
+            PlayerPrefs.SetString("u", "true");
         }
         else if (height < 1000f)
         {
             score.text = "You're visible light! You had a wavelength of: " + d.ToString("E1") + "m\nThis is part of the small spectrum that humans can see.";
+            PlayerPrefs.SetString("v", "true");
         }
         else
         {
             if (photonReleased)
                 input.Enable(gameOver);
             score.text = "You escaped the sun as infra-red light! You had a wavelength of: " + d.ToString("E1") + "m\nThis accounts for almost half of light emitted by the sun.";
+            PlayerPrefs.SetString("i", "true");
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             photonReleased = false;
         }

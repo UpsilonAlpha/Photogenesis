@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DentedPixel;
 
@@ -16,14 +17,26 @@ public class InputManager : MonoBehaviour
     public Photon photon = Photon.instance;
     public CanvasGroup gamePanel;
     public CanvasGroup gameOver;
+    public Text encouragement;
     public static bool paused;
+    private float timer;
 
     void Update()
     {
+        timer += Time.deltaTime;
         if(photon.photonReleased && gamePanel.alpha == 0 && gameOver.alpha == 0 && !paused)
         {
             Enable(gamePanel);
+            if (timer < 1000)
+            {
+                FadeOut();
+            }
         }
+    }
+
+    public void FadeOut()
+    {
+        encouragement.CrossFadeAlpha(0, 2, false);
     }
 
     public void Reset()
